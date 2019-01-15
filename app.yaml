@@ -1,0 +1,18 @@
+# [START app_yaml]
+runtime: nodejs8
+env: standard
+# [END app_yaml]
+
+handlers:
+- url: /_nuxt
+  static_dir: .nuxt/dist/client
+  secure: always
+
+- url: /(.*\.(gif|png|jpg|ico|txt))$
+  static_files: static/\1
+  upload: static/.*\.(gif|png|jpg|ico|txt)$
+  secure: always
+
+- url: /.*
+  script: auto
+  secure: always
